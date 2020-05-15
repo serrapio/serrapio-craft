@@ -1,0 +1,7 @@
+name: SerrapioCraft
+main: io.github.avdaco.serrapiocraft.SerrapioCraft
+version: 1.0
+commands:
+   tumba:
+      description: "Devuelve las coordenadas de tu última muerte"
+      usage: /tumba
