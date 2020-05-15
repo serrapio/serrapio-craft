@@ -1,4 +1,4 @@
-package utils;
+package io.github.avdaco.serrapiocraft.utils;
 
 import org.bukkit.Location;
 

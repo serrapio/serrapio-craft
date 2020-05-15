@@ -5,8 +5,8 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
-import broadcast.Broadcaster;
-import data.MemoryData;
+import io.github.avdaco.serrapiocraft.broadcast.Broadcaster;
+import io.github.avdaco.serrapiocraft.data.MemoryData;
 
 public class DeathController {
 	

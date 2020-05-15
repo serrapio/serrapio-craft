@@ -1,4 +1,4 @@
-package data;
+package io.github.avdaco.serrapiocraft.data;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
 import io.github.avdaco.serrapiocraft.death.PlayerDeathInformation;
-import utils.LocationUtils;
+import io.github.avdaco.serrapiocraft.utils.LocationUtils;
 
 public class MemoryData {
 

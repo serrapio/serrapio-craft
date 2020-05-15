@@ -1,7 +1,7 @@
 package io.github.avdaco.serrapiocraft;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import data.MemoryData;
+import io.github.avdaco.serrapiocraft.data.MemoryData;
 import io.github.avdaco.serrapiocraft.death.DeathCommand;
 import io.github.avdaco.serrapiocraft.death.DeathEventListener;
 
