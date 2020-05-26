@@ -7,6 +7,7 @@ import io.github.avdaco.serrapiocraft.data.MemoryData;
 import io.github.avdaco.serrapiocraft.death.DeathCommand;
 import io.github.avdaco.serrapiocraft.death.DeathEventListener;
 import io.github.avdaco.serrapiocraft.respawn.PlayerRespawnEventListener;
+import io.github.avdaco.serrapiocraft.sleep.PlayerBedEnterEventListener;
 
 /**
  * Entry point for the template plugin. You should edit
@@ -41,6 +42,7 @@ public class SerrapioCraft extends JavaPlugin {
     	this.getServer().getPluginManager().registerEvents(new ChunkLoadEventListener(), this);
     	this.getServer().getPluginManager().registerEvents(new ChunkUnloadEventListener(), this);
     	this.getServer().getPluginManager().registerEvents(new PlayerRespawnEventListener(), this);
+    	this.getServer().getPluginManager().registerEvents(new PlayerBedEnterEventListener(), this);
     }
     
     private void loadCommands() {
