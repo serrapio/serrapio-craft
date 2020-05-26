@@ -3,15 +3,22 @@ package io.github.avdaco.serrapiocraft.death;
 import org.bukkit.Location;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
+import io.github.avdaco.serrapiocraft.chunk.ChunkId;
+import io.github.avdaco.serrapiocraft.timer.DeathTimer;
+
 public class PlayerDeathInformation {
 
 	private PlayerDeathEvent playerDeathEvent;
-	private Location deathLocation;
+	private Location location;
+	private ChunkId chunkId;
+	private DeathTimer deathTimer;
 	
-	public PlayerDeathInformation(PlayerDeathEvent playerDeathEvent, Location deathLocation) {
+	public PlayerDeathInformation(PlayerDeathEvent playerDeathEvent, Location location, ChunkId chunkId) {
 		super();
 		this.playerDeathEvent = playerDeathEvent;
-		this.deathLocation = deathLocation;
+		this.location = location;
+		this.chunkId = chunkId;
+		this.deathTimer = new DeathTimer(playerDeathEvent.getEntity());
 	}
 
 	public PlayerDeathEvent getPlayerDeathEvent() {
@@ -22,12 +29,28 @@ public class PlayerDeathInformation {
 		this.playerDeathEvent = playerDeathEvent;
 	}
 
-	public Location getDeathLocation() {
-		return deathLocation;
+	public Location getLocation() {
+		return location;
 	}
 
-	public void setDeathLocation(Location deathLocation) {
-		this.deathLocation = deathLocation;
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+	public ChunkId getChunkId() {
+		return chunkId;
+	}
+
+	public void setChunkId(ChunkId chunkId) {
+		this.chunkId = chunkId;
+	}
+
+	public DeathTimer getDeathTimer() {
+		return deathTimer;
+	}
+
+	public void setDeathTimer(DeathTimer deathTimer) {
+		this.deathTimer = deathTimer;
 	}
 	
 }

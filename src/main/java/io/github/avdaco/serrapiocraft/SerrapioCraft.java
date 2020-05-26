@@ -1,9 +1,12 @@
 package io.github.avdaco.serrapiocraft;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import io.github.avdaco.serrapiocraft.chunk.ChunkLoadEventListener;
+import io.github.avdaco.serrapiocraft.chunk.ChunkUnloadEventListener;
 import io.github.avdaco.serrapiocraft.data.MemoryData;
 import io.github.avdaco.serrapiocraft.death.DeathCommand;
 import io.github.avdaco.serrapiocraft.death.DeathEventListener;
+import io.github.avdaco.serrapiocraft.respawn.PlayerRespawnEventListener;
 
 /**
  * Entry point for the template plugin. You should edit
@@ -18,8 +21,11 @@ import io.github.avdaco.serrapiocraft.death.DeathEventListener;
  */
 public class SerrapioCraft extends JavaPlugin {
 	
+	private static SerrapioCraft instance;
+	
     @Override
     public void onEnable() {
+    	instance = this;
     	MemoryData.initializeMemoryData();
     	this.loadListeners();
     	this.loadCommands();
@@ -32,10 +38,16 @@ public class SerrapioCraft extends JavaPlugin {
     
     private void loadListeners() {
     	this.getServer().getPluginManager().registerEvents(new DeathEventListener(), this);
+    	this.getServer().getPluginManager().registerEvents(new ChunkLoadEventListener(), this);
+    	this.getServer().getPluginManager().registerEvents(new ChunkUnloadEventListener(), this);
+    	this.getServer().getPluginManager().registerEvents(new PlayerRespawnEventListener(), this);
     }
     
     private void loadCommands() {
     	this.getCommand("tumba").setExecutor(new DeathCommand());
     }
-
+    
+    public static SerrapioCraft getPlugin() {
+    	return instance;
+    }
 }

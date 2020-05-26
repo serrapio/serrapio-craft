@@ -1,12 +1,14 @@
 package io.github.avdaco.serrapiocraft.death;
 
+import java.util.List;
+
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
-import io.github.avdaco.serrapiocraft.broadcast.Broadcaster;
 import io.github.avdaco.serrapiocraft.data.MemoryData;
+import io.github.avdaco.serrapiocraft.messaging.Broadcaster;
 
 public class DeathController {
 	
@@ -33,7 +35,17 @@ public class DeathController {
 		return ("Coordenadas de muerte de " + entity.getName() + ": "
 				+ ("x = " + deathLocation.getBlockX())
 				+ (", y = " + deathLocation.getBlockY())
-				+ (", z = " + deathLocation.getBlockZ()));
+				+ (", z = " + deathLocation.getBlockZ())
+				+ (". Tiempo restante hasta desaparecer: " + MemoryData.getDeathTimer(entity.getEntityId()))
+				+ (". Chunk: " + (MemoryData.isDeathTimerRunning(entity.getEntityId()) ? "CARGADA" : "DESCARGADA")));
+	}
+	
+	public void resumeDeathTimers(List<PlayerDeathInformation> deathInfoList) {
+		deathInfoList.stream().filter(x -> x.getDeathTimer().isStopped()).forEach(x -> x.getDeathTimer().startTimer());
+	}
+	
+	public void stopDeathTimers(List<PlayerDeathInformation> deathInfoList) {
+		deathInfoList.stream().filter(x -> !x.getDeathTimer().isStopped() && !x.getDeathTimer().isFinished()).forEach(x -> x.getDeathTimer().stopTimer());
 	}
 	
 }

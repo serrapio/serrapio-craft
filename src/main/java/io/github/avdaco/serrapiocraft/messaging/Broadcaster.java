@@ -1,4 +1,4 @@
-package io.github.avdaco.serrapiocraft.broadcast;
+package io.github.avdaco.serrapiocraft.messaging;
 
 import org.bukkit.Bukkit;
 
